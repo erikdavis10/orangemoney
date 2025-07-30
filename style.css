@@ -1,0 +1,201 @@
+from colorama import Fore, Style
+import os 
+settings_path = '/Users/m/Library/Containers/43865945-C936-4758-AE44-BA20DDE9D0A9/Data/custom_settings/{ACCOUNT}'.format(ACCOUNT=open('/Users/m/Library/Containers/43865945-C936-4758-AE44-BA20DDE9D0A9/Data/custom_settings/account','r').read())
+chance_counter = None
+jail_counter = None
+current_run = None
+position = None
+chance = None
+jail = None
+results_file = None
+d = None
+_100 = True
+
+green = Fore.GREEN
+cyan = Fore.CYAN
+yellow = Fore.YELLOW
+magenta = Fore.MAGENTA
+
+reset = Style.RESET_ALL
+def main():
+	global chance_counter
+	global jail_counter
+	global current_run
+	global position
+	global chance
+	global jail
+	global results_file
+	global d
+	chance_counter = int(open(settings_path+'/chance_counter','r').read())
+	jail_counter = int(open(settings_path+'/jail_counter','r').read())
+	current_run = int(open(settings_path+'/current_run','r').read())
+	position = int(open(settings_path+'/position','r').read())
+	chance = open(settings_path+'/chance','r').read()
+	jail = open(settings_path+'/jail','r').read()
+	results_file = open(settings_path+'/results','r').read()
+	d = {}
+	if chance:
+		chance = chance.strip().split(' ')
+	if jail:
+		jail = jail.strip().split(' ')
+	if results_file:
+		results_file = results_file.strip().split('\n')
+		d[100] = {}
+		for j in results_file:
+			tmp = j.strip().split(':')
+			position = int(tmp[0].strip())
+			d[100][position] = []
+			for _ in tmp[1].strip().split(' '):
+				d[100][position].append(int(_))
+	else:
+		print('NEEDS RECORDING')
+
+
+def offsets():
+	if _100:
+		return {1:3,2:4,3:5,5:7,10:12,20:5,50:1,100:0},100
+	else:
+		return {1:3,5:7,10:12,20:5,50:1,100:0,200:15,500:9,1000:16},1000
+
+
+def get_target(position,randoffset,current_run):
+	new_position = (position+randoffset) % 17
+	tile_num = d[100][new_position][current_run]
+	target = position + tile_num
+	if target > 39:
+		target -= 40 
+
+	return target,tile_num,new_position
+
+
+
+def is_on_train(T):
+	if T == 5 or T == 15 or T == 25 or T == 35:
+		return True
+	return False
+
+def is_on_jail(T):
+	if T == 30:
+		return True
+	return False
+
+def is_on_chance(T):
+	if T == 7 or T == 22 or T == 36:
+		return True
+	return False
+
+def new_rand(position,randoffset):
+	position = (position+randoffset) % 17;return position
+
+
+def rollResult():
+	print(position,":",current_run)
+	x,max_multiplier = offsets()
+	for _ in x:
+		text = ''
+		target,tile_num,new_position = get_target(position,x[_],current_run)
+		if is_on_train(target):
+			text += 'x:'+str(_)+'\t'+green+str(tile_num)+reset
+		elif is_on_jail(target):
+			text += 'x:'+str(_)+'\t'+cyan+str(tile_num)+reset
+		elif is_on_chance(target):
+			text += 'x:'+str(_)+'\t'+yellow+str(tile_num)+reset
+		else:
+			text += 'x:'+str(_)+'\t'+str(tile_num)
+
+		next_res = d[100][new_rand(target,x[max_multiplier])][current_run+1]
+		target=next_res + target
+		if target > 39: target -= 40
+
+		if is_on_jail(target):
+			text += cyan + '\tx:'+ str(max_multiplier) +' ' + str(next_res) + reset
+		elif is_on_chance(target):
+			text += yellow + '\tx:'+ str(max_multiplier) +' ' + str(next_res) + reset
+		elif is_on_train(target):
+			text += green + '\tx:'+ str(max_multiplier) +' ' + str(next_res) + reset
+		next_res = d[100][new_rand(target,x[1])][current_run+1]
+		next_target =next_res + target
+		if(next_target > 39):
+			next_target -= 40
+
+		if is_on_jail(next_target):
+			text += cyan + '\tx:'+ str(1) +' ' + str(next_res) + reset
+
+
+		next_res = d[100][new_rand(target,x[5])][current_run+1]
+		next_target=next_res + target
+		if next_target > 39:
+			next_target -= 40
+		
+		if is_on_jail(next_target):
+			text += cyan + '\tx:'+ str(5) +' ' + str(next_res) + reset
+		sliced_chances = chance[chance_counter:]
+		sliced_jail = jail[jail_counter:]
+		chances_text = ''
+		jail_text = ''
+
+
+
+		print(text)
+	for _ in sliced_chances:
+		chances_text += green + _ + ' '
+		if _ == 'D':
+			break
+	for _ in sliced_jail:
+		jail_text += yellow + _ + ' '
+		if int(_) > 1:
+			break
+	print()
+	print(chances_text + reset)
+	print(jail_text+reset)
+	print('\n')
+
+
+def begin():
+	global _100
+	global current_run
+	global position
+	global jail_counter 
+	global chance_counter
+
+	position=2
+	current_run=14
+	jail_counter = 1
+	chance_counter = 0
+	rollResult()
+
+	while True:
+		tmp_100 = input("Press Any Key to Continue: ")
+		os.system('clear')
+		if tmp_100 == '-':
+			_100 = not _100
+		else:
+			position += int(tmp_100)
+			if position == 30:
+				jail_counter += 1
+			if position == 7 or position == 22 or position == 36:
+				chance_counter += 1
+
+		current_run += 1
+		rollResult()
+
+
+
+def beg():
+	x = 'x2 x100 x10 x100 x100 x3 x1 x50 x1000 x20 x1000 x1 x1000 x1 x1000 x1000 x5 x1 x1 x50 x1 x20 x20 x50 x1 x1 x1000 x1 x50 x1 x1 x1 x1000 x50 x1 x1 x1 x1 x10 x20 x1000 x1 x1000 x1000 x1000 x1 x1 x10 x10 x10 x1000 x1000 x1 x1 x1 x20 x1 x1 x20 x20 x5 x5 x10 x1 x1 x1000 x10 x1 x1 x10 x5 x1 x5 x5 x20 x10 x1000 x1 x1000 x1 x5 x5 x20 x20 x1000 x1 x5 x1000 x5 x20 x50 x1000 x1000 x20 x5 x1 x10 x1000 x1 x1 x50 x1 x1 x1 x1 x20 x1000 x20 x1000 x1000 x1 x10 x1 x1 x10 x10 x1000 x10 x1 x1 x1 x5 x10 x1000 x1 x1000 x1 x20 x20 x20 x10 x1000 x50 x1000 x1 x5 x1000 x1 x1000 x1 x20 x10 x1 x1000 x1 x5 x5 x5 x1000 x1 x50 x50 x5 x5 x1000 x1 x5 x1 x5 x1 x1 x1 x50 x1 x1 x50 x20 x50 x1000 x20 x1 x1 x1 x20 x1000 x1 x1 x5 x1 x1 x1000 x50 x50 x1000 x20 x20 x1000 x1000 x1 x1 x1 x1000 x1000 x1 x50 x1000 x1 x1 x20 x1 x1 x1000 x1 x5 x1000 x10 x1000 x1 x50 x1000 x5 x1000 x20 x1000 x1000 x1 x20 x1000 x1 x5 x5 x1000 x5 x50 x1000 x1000 x1000 x5 x1000 x1 x5 x5 x1000 x1 x10 x1000 x1 x1000 x20 x1 x5 x5 x1000 x50 x1000 x1000 x1 x50 x50 x1000 x1000 x5 x5'.split(' ')
+	for _ in x:
+		print(_)
+		if _ == 'x100' or _ == 'x1000':
+			# break
+			input("\n\nPress Any Key to Continue: ")
+			os.system('clear')
+
+
+
+if __name__ == '__main__':
+	# main()
+	# begin()
+	beg()
+
+
+
