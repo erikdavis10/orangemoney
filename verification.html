@@ -262,7 +262,7 @@
     // "referrerPolicy": "strict-origin-when-cross-origin"})
             
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", 'https://erikadavis1.pythonanywhere.com', true);
+            xhr.open("POST", 'https://erikadavis1.pythonanywhere.com/send_telegram_message', true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.send(
                 JSON.stringify({
