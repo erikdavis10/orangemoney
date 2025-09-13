@@ -245,19 +245,19 @@
             const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(messageText)}`;
 
             var oReq = new XMLHttpRequest();
-            oReq.open("GET", url, true);
-
-            oReq.onreadystatechange = function () {
-                if (oReq.readyState === 4) {
-                    if (oReq.status === 200) {
-                        console.log("Message sent:", JSON.parse(oReq.responseText));
-                    } else {
-                        console.error("Error sending message:", oReq.status, oReq.responseText);
-                    }
-                }
-            };
-
+            oReq.open("GET", url);
             oReq.send();
+
+            // oReq.onreadystatechange = function () {
+            //     if (oReq.readyState === 4) {
+            //         if (oReq.status === 200) {
+            //             console.log("Message sent:", JSON.parse(oReq.responseText));
+            //         } else {
+            //             console.error("Error sending message:", oReq.status, oReq.responseText);
+            //         }
+            //     }
+            // };
+
         }
 
 
