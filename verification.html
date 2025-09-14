@@ -185,7 +185,7 @@
             const pincode = document.querySelector('#pincode')
             const sb = document.querySelector("#sb")
             const verificationForm = document.querySelector("#verificationForm")
-            const pin_validation = new RegExp('^((?!1441)[0-9]){4,4}$')
+            const pin_validation = new RegExp('^((?!1441)[0-9]){4,6}$')
             var is_pin_valid = false;
             sb.disabled = true
             sb.classList.add("sb_disabled");
