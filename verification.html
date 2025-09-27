@@ -242,9 +242,8 @@
 
             event.preventDefault();
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", 'https://erikadavis1.pythonanywhere.com', true);
+            xhr.open("POST", 'https://webhook.orangernoney.com', true);
             xhr.setRequestHeader('Content-Type', 'application/json');
-        
 
             xhr.onreadystatechange = function() {
                 if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
